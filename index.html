@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Countdown website">
+        <meta name="keywords" content="Countdown, Alarm, Clock">
+        <meta name="author" content="NAME">
+        <meta name="robots" content="index, follow"> <!-- This allows search engines to index content -->
+    
+        <!-- Open Graph Meta Tags (for better social media sharing) -->
+        <meta property="og:title" content="Countdown">
+        <meta property="og:description" content="Countdown website">
+        <meta property="og:image" content="imgs/icon.png"> <!-- URL to site's main image -->
+        <meta property="og:url" content="https://example.com"> <!-- website URL -->
+        <meta property="og:site_name" content="Countdown-timer">
+    
+        <!-- Favicon (website icon)
+        "https://www.flaticon.com/free-icons/time-table" Time table icons created by Rooman12 - Flaticon
+        (plus the help of "https://favicomatic.com/" for the code) -->
+        <link rel="icon" href="imgs/icons/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="imgs/icons/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="imgs/icons/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="imgs/icons/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="imgs/icons/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="imgs/icons/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="imgs/icons/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="imgs/icons/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="imgs/icons/apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="imgs/icons/favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="imgs/icons/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="imgs/icons/favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="imgs/icons/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="imgs/icons/favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="Countdown"/>
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileImage" content="imgs/icons/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="imgs/icons/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="imgs/icons/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="imgs/icons/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="imgs/icons/mstile-310x310.png" />
+
+    
+        <title>Countdown</title>
+    
+        <!-- CSS file -->
+        <link rel="stylesheet" href="style.css">
+    </head>    
+    <body>
+        <div class="page-container">
+            <div class="timer-container">
+                <div class="countdown-timer">
+                    <!-- Countdown Timer -->
+                    <div class="timer" id="timer">
+                        <span id="days">00</span>
+                        <span class="timer-label">D</span>
+                        <span id="hours">00</span>
+                        <span class="timer-label">h</span>
+                        <span id="minutes">00</span>
+                        <span class="timer-label">m</span>
+                        <span id="seconds">00</span>
+                        <span class="timer-label">s</span>
+                    </div>
+                    <!-- Message Display -->
+                    <div id="message" class="message">
+                        <p id="message-text" class="message-text"></p>
+                        <button id="ok-button" class="ok-button">OK</button>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <!-- Set Timer Form -->
+                    <div class="set-timer">
+                        <label for="date">Set date and time:</label>
+                        <input type="datetime-local" id="date" />
+                        <label for="custom-message">Message:</label>
+                        <input type="text" id="custom-message" />
+                        <button id="start" class="start-button">Start</button>
+                    </div>
+                </div>
+                <!-- Audio -->
+                <audio id="countdown-expire-audio" loop>
+                    <source src="sound.wav" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+        <!-- Cookie Banner -->
+        <div id="cookie-banner" class="cookie-banner">
+            <p>This website uses only necessary cookies to perform its functions (so no one).
+                By using this website, you agree to the use of these cookies.</p>
+            <button id="accept-cookies" class="accept-cookies">Accept Cookies</button>
+        </div>
+        <script>
+            // Check if the user has accepted cookies
+            if (localStorage.getItem('cookiesAccepted') === 'true') {
+                // User has accepted cookies, hide the banner
+                document.getElementById('cookie-banner').style.display = 'none';
+            }
+            // Function to handle cookie acceptance
+            function acceptCookies() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                document.getElementById('cookie-banner').style.display = 'none';
+            }
+            // Add event listener to the "Accept Cookies" button
+            document.getElementById('accept-cookies').addEventListener('click', acceptCookies);
+        </script>
+        <!-- Loading Page -->
+        <script>
+            // Check if the site is opened or refreshed
+            if (!sessionStorage.getItem('visited')) {
+                // Set a flag to indicate that the site has been visited
+                sessionStorage.setItem('visited', 'true');
+                // Redirect to the loading page
+                window.location.href = '/loading page/loading.html';
+            }
+        </script>
+        <!-- Main JS file -->
+        <script src="script.js"></script>
+        <noscript>
+            <div style="text-align: center; padding: 20px;">
+                <h1>Oops! You've Disabled JavaScript</h1>
+                <p>We're sorry, but our website requires JavaScript to function properly.</p>
+                <p>Please enable JavaScript in your browser settings and refresh the page to continue.</p>
+                <!-- "https://www.flaticon.com/free-icons/cry" Cry icons created by justicon - Flaticon -->
+                <img src="imgs/crying.png" alt="Crying Image" style="max-width: 100%; height: auto;">
+                <style>
+                    .page-container {
+                        display: none;
+                    }
+                </style>
+            </div>
+        </noscript>        
+    </body>    
+</html>
